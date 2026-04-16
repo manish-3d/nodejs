@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => res.send("Hello, world!"));
+// import controller
+const { getHome } = require("./controllers/homeController");
+
+// use controller in route
+app.get("/", getHome);
 
 const PORT = 3000;
 app.listen(PORT, (error) => {
-  // This is important!
-  // Without this, any startup errors will silently fail
-  // instead of giving you a helpful error message.
   if (error) {
     throw error;
   }
